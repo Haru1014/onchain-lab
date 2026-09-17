@@ -20,7 +20,6 @@ block = client.get_block(
     commitment="finalized",
     max_supported_transaction_version=0,
 ).value
-
 '''
 block = response = client.get_block(
     slot,
