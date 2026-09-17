@@ -1,5 +1,6 @@
 import os
 import requests
+import json
 
 from dotenv import load_dotenv
 
@@ -50,3 +51,25 @@ data = response.json()
 
 # 印出結果
 print(data)
+print(type(data))
+print(data.keys())
+
+# 取得真正的 block
+block = data["result"]
+
+if block is None:
+    print("這個 slot 沒有 block")
+else:
+    print("block type:", type(block))
+    print("block keys:", block.keys())
+
+# 儲存成真正的 JSON
+with open("block_100000000.json", "w", encoding="utf-8") as f:
+    json.dump(
+        data,
+        f,
+        ensure_ascii=False,
+        indent=2
+    )
+
+print("JSON 檔案儲存完成")
